@@ -3,8 +3,8 @@
 
 <h1>Add a new class</h1>
 
-  <%= simple_form_for @course do |f| %>
-    <%= f.input :name %>
+<%= simple_form_for @course, url: classes_path do |f| %>
+    <%= f.input :name %><br/>
     <%= f.submit 'Create' %>
   <% end %>
 
