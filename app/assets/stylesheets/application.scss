@@ -57,8 +57,25 @@ h1 {
   color: red;
 }
 
+.bold {
+  font-weight: 200;
+}
+
+.optional, .required {
+  font-weight: 400;
+}
+
 p.alert {
   margin: 0;
+}
+
+a, a:link, a:active, a:visited {
+  color: #CE0000;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #8B0000;
 }
 
 .btn {
