@@ -14,11 +14,27 @@
  *= require_self
  */
 
- body {
+@import url(http://fonts.googleapis.com/css?family=Pacifico);
+
+body {
   font-family: 'Helvetica Neue', arial;
   font-weight: 200;
   letter-spacing: 3px;
-  text-align: center;
+}
+
+.navbar {
+  margin: 0;
+}
+
+.navbar-default a.navbar-brand:link, .navbar-default a.navbar-brand:visited, .navbar-default a.navbar-brand:active {
+  font-family: 'Pacifico';
+  font-size: 3em;
+  color: #CE0000;
+  margin-top: 3px;
+}
+
+.navbar-default a.navbar-brand:hover {
+  color: #8B0000;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -32,6 +48,11 @@ h1 {
   letter-spacing: 5px;
 }
 
+.modal-title {
+  text-align: left;
+  font-weight: 200;
+}
+
 .red {
   color: red;
 }
@@ -40,6 +61,13 @@ p.alert {
   margin: 0;
 }
 
-.navbar {
-  margin: 0;
+.btn {
+  letter-spacing: 2px;
+  color: white;
+  background-color: #CE0000;
+}
+
+.btn:hover {
+  color: white;
+  background-color: #8B0000;
 }
