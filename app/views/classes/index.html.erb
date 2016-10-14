@@ -40,7 +40,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="newClassModalLabel">Add a new class</h4>
       </div>
-      <%= simple_form_for @course, url: classes_path, html: {id: 'newClassForm'} do |f| %>
+      <%= simple_form_for @new_course, url: classes_path, html: {id: 'newClassForm'} do |f| %>
       <div class="modal-body">
           <%= f.input :name %><br/>
       </div>
