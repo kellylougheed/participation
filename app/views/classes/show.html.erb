@@ -1,10 +1,28 @@
 <script>
 $(function() {
   $(".plus").click(function() {
-    // add point
+    var updateURL = $(event.target).data("update-url");
+    var currentPoints = $(event.target).data("current-points");
+    var newPoints = currentPoints + 1;
+    $.ajax({
+      type: 'PUT',
+      url: updateURL,
+      dataType: 'json',
+      data: { student: { points: newPoints }}
+    });
+    location.reload();
   });
   $(".minus").click(function() {
-
+    var updateURL = $(event.target).data("update-url");
+    var currentPoints = $(event.target).data("current-points");
+    var newPoints = currentPoints - 1;
+    $.ajax({
+      type: 'PUT',
+      url: updateURL,
+      dataType: 'json',
+      data: { student: { points: newPoints }}
+    });
+    location.reload();
   });
 });
 </script>
@@ -29,10 +47,11 @@ $(function() {
 
           <td><%= student.points %> / <%= @course.total_points %></td>
 
-          <td><span class="plus glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-          <span class="minus glyphicon glyphicon-minus-sign" aria-hidden="true"></span></td>
+          <td><span class="plus glyphicon glyphicon-plus-sign" aria-hidden="true" data-update-url="<%= student_path(student) %>" data-current-points="<%= student.points %>"></span>
 
-          <td><%= (student.points.to_f)/(@course.total_points.to_f)*100 %>% </td>
+          <span class="minus glyphicon glyphicon-minus-sign" aria-hidden="true" data-update-url="<%= student_path(student) %>" data-current-points="<%= student.points %>"></span></td>
+
+          <td><%= ((student.points.to_f)/(@course.total_points.to_f)*100).round(2) %>% </td>
 
           </tr>
           <% end %>
