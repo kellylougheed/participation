@@ -3,14 +3,18 @@
 
 <h1>My Classes</h1>
 <br/>
+
 <!-- New class trigger modal -->
     <button class="btn" id="new-class" data-toggle="modal" data-target="#newClassModal">
       New Class
     </button>
-<br/><br/>
+    <br/>
+    <br/>
 
 <% current_user.courses.each do |course| %>
+  <div class="class">
   <%= link_to course.name, class_path(course) %>
+  </div>
   <br/>
 <% end %>
 
