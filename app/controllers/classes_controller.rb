@@ -2,7 +2,6 @@ class ClassesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @courses = Course.all
     @new_course = Course.new
   end
 
@@ -11,6 +10,11 @@ class ClassesController < ApplicationController
     @course.user_id = current_user.id
     @course.save
     redirect_to classes_path
+  end
+
+  def show
+    @course = Course.find(params[:id])
+    @new_student = Student.new
   end
 
   private

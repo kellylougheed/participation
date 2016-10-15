@@ -1,10 +1,10 @@
 class StudentsController < ApplicationController
 
   def create
-    @new_student = Course.find(id).students.create(student_params)
-    @student.starting_points = @student.course.starting_points
-    @student.save
-    redirect_to classes_path
+    @course = Course.find(params[:class_id])
+    @course.students.create(student_params.merge(course_id: @course.id, points: @course.starting_points))
+
+    redirect_to class_path(@course)
   end
 
   private

@@ -1,0 +1,44 @@
+<br/>
+<div class="col-xs-10 col-xs-offset-1 text-center">
+
+<h1><%= @course.name %></h1>
+
+<!-- New student trigger modal -->
+        <button class="btn" id="new-student" data-toggle="modal" data-target="#newStudentModal">
+          New Student
+        </button>
+
+<table class="roster">
+          <% @course.students.each do |student| %>
+          <tr>
+          <td><%= student.last_name %>, <%= student.first_name %></td>
+          <td><%= student.points %> / <%= @course.total_points %></td>
+          <td>Plus/Minus Toggle</td>
+          <td>Percentage</td>
+          </tr>
+          <% end %>
+        </table>
+
+</div>
+
+<!-- New student modal -->
+<div class="modal fade" id="newStudentModal" tabindex="-1" role="dialog" aria-labelledby="newStudentLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="newStudentModalLabel">Add a new student</h4>
+      </div>
+      <%= simple_form_for @new_student, url: class_students_path(@course), html: {id: 'newStudentForm'} do |f| %>
+      <div class="modal-body">
+          <%= f.input :first_name %><br/>
+          <%= f.input :last_name %><br/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal">Close</button>
+        <%= f.submit 'Create', class: 'btn' %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
