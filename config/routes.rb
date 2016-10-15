@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'static_pages#index'
 
   resources :classes do
-    resources :students, only: :create
+    resources :students
   end
   
   # The priority is based upon order of creation: first created -> highest priority.
