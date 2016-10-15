@@ -4,6 +4,7 @@
 <h1><%= @course.name %></h1>
 <br/>
 
+<% if !@course.students.empty? %>
 <table class="roster">
 <thead>
 <th>Student</th>
@@ -14,13 +15,22 @@
           <% @course.students.each do |student| %>
           <tr>
           <td class="student"><%= student.last_name %>, <%= student.first_name %></td>
+
           <td><%= student.points %> / <%= @course.total_points %></td>
-          <td>Plus/Minus Toggle</td>
+
+          <td><span class="plus glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+          <span class="minus glyphicon glyphicon-minus-sign" aria-hidden="true"></span></td>
+
           <td><%= (student.points.to_f)/(@course.total_points.to_f)*100 %>% </td>
+
           </tr>
           <% end %>
 </tbody></table>
-<br/><br/>
+<br/>
+<% else %>
+<p>No students have been added to this class yet.</p>
+<% end %>
+<br/>
 
 <!-- New student trigger modal -->
         <button class="btn" id="new-student" data-toggle="modal" data-target="#newStudentModal">

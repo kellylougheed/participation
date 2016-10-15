@@ -108,20 +108,32 @@ a:hover {
 .roster {
   max-width: 80%;
   margin: 0 auto;
+  font-size: 1.2em;
 }
 
 .roster thead th {
   text-align: center;
 }
 
-td.student {
-  text-align: left;
+.roster td {
+  width: 20%;
 }
 
-.roster td {
-  width: 25%;
+.roster td.student {
+  text-align: left;
+  width: 40%;
 }
 
 .class a:hover {
   color: #111111;
+}
+
+.plus, .minus {
+  font-size: 1.3em;
+  color: red;
+}
+
+.plus:hover, .minus:hover {
+  color: #8B0000;
+  cursor: pointer;
 }
