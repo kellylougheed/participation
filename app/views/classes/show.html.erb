@@ -1,12 +1,6 @@
 <br/>
 <div class="col-xs-10 col-xs-offset-1 text-center">
 
-<!-- New student trigger modal -->
-        <button class="btn pull-right" id="new-student" data-toggle="modal" data-target="#newStudentModal">
-          New Student
-        </button>
-        <br/>
-
 <h1><%= @course.name %></h1>
 <br/>
 
@@ -16,16 +10,22 @@
 <th>Points</th>
 <th></th>
 <th>Percentage</th>
-</thead>
+</thead><tbody>
           <% @course.students.each do |student| %>
           <tr>
-          <td><%= student.last_name %>, <%= student.first_name %></td>
+          <td class="student"><%= student.last_name %>, <%= student.first_name %></td>
           <td><%= student.points %> / <%= @course.total_points %></td>
           <td>Plus/Minus Toggle</td>
-          <td>Percentage</td>
+          <td><%= (student.points.to_f)/(@course.total_points.to_f)*100 %>% </td>
           </tr>
           <% end %>
-        </table>
+</tbody></table>
+<br/><br/>
+
+<!-- New student trigger modal -->
+        <button class="btn" id="new-student" data-toggle="modal" data-target="#newStudentModal">
+          New Student
+        </button>
 
 </div>
 

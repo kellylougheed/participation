@@ -105,6 +105,23 @@ a:hover {
   color: #777777;
 }
 
+.roster {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.roster thead th {
+  text-align: center;
+}
+
+td.student {
+  text-align: left;
+}
+
+.roster td {
+  width: 25%;
+}
+
 .class a:hover {
   color: #111111;
 }
