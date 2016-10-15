@@ -10,7 +10,7 @@
 <br/><br/>
 
 <% current_user.courses.each do |course| %>
-  <%= link_to course.name, url: class_path(course) %>
+  <%= link_to course.name, class_path(course) %>
   <br/>
 <% end %>
 
