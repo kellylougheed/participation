@@ -41,7 +41,7 @@ $(function() {
 <th></th>
 <th>Percentage</th>
 </thead><tbody>
-          <% @course.students.each do |student| %>
+          <% @course.students.order("last_name").each do |student| %>
           <tr>
           <td class="student"><%= student.last_name %>, <%= student.first_name %></td>
 
