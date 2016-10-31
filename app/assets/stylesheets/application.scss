@@ -170,3 +170,14 @@ img {
     border: 1px solid #aaaaaa;
     box-shadow: 2px 2px 5px rgba(0,0,0,.5);
 }
+
+@media (max-width: 767px) {
+  .hero {
+    height: 400px;
+  }
+  .textbox {
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+}
