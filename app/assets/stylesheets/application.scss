@@ -24,6 +24,7 @@ body {
 
 .navbar {
   margin: 0;
+  z-index: 1;
 }
 
 .navbar-default a.navbar-brand:link, .navbar-default a.navbar-brand:visited, .navbar-default a.navbar-brand:active {
@@ -56,6 +57,7 @@ body {
   top: 50px;
   left: 50%;
   padding: 20px;
+  z-index: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
