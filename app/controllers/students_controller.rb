@@ -13,6 +13,16 @@ class StudentsController < ApplicationController
     redirect_to class_path(@course)
   end
 
+  def destroy
+    @student = Student.find(params[:id])
+    @course = @student.course
+    if current_user != @course.user
+      return render text: 'Not Allowed', status: :forbidden
+    end
+    @student.destroy
+    redirect_to class_path(@course)
+  end
+
   private
 
   def student_params

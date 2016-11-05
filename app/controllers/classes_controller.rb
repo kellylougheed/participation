@@ -8,7 +8,7 @@ class ClassesController < ApplicationController
 
   def create
     @course = Course.new(course_params)
-    @course.user_id = current_user.id
+    @course.user = current_user
     @course.save
     redirect_to classes_path
   end

@@ -92,13 +92,14 @@ p.alert {
   margin: 0;
 }
 
-a, a:link, a:active, a:visited {
+a, a:link, a:active, a:visited, span.link {
   color: #CE0000;
   text-decoration: none;
 }
 
-a:hover {
+a:hover, span.link:hover {
   color: #8B0000;
+  cursor: pointer;
 }
 
 .btn {
@@ -139,7 +140,7 @@ a:hover {
 }
 
 .roster td {
-  width: 20%;
+  width: 15%;
 }
 
 .roster td.student {

@@ -36,6 +36,7 @@ $(function() {
 <% if !@course.students.empty? %>
 <table class="roster">
 <thead>
+<th></th>
 <th>Student</th>
 <th>Points</th>
 <th></th>
@@ -43,6 +44,14 @@ $(function() {
 </thead><tbody>
           <% @course.students.order("last_name").each do |student| %>
           <tr>
+          <td class="control-panel">
+            <%= link_to student_path(student), method: :delete, data: {confirm: 'Are you sure you want to delete this student?'} do %>
+            <span class="glyphicon glyphicon-trash" aria-hidden="true" data-update-url="<%= student_path(student) %>"></span>
+            <% end %>
+
+            <span class="glyphicon glyphicon-erase link reset" aria-hidden="true" data-update-url="<%= student_path(student) %>"></span>
+
+          </td>
           <td class="student"><%= student.last_name %>, <%= student.first_name %></td>
 
           <td><%= student.points %> / <%= @course.total_points %></td>
@@ -62,14 +71,20 @@ $(function() {
 <% end %>
 <br/>
 
+<hr/>
+
 <!-- New student trigger modal -->
         <button class="btn" id="new-student" data-toggle="modal" data-target="#newStudentModal">
-          New Student
+           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Student
         </button>
+        <br/><br/>
 
-<br/><br/>
+ <span class="link"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span> Reset All Points</span><br/><br/>
 
-<%= link_to 'Delete Class', class_path(@course), method: :delete, data: {confirm: 'Are you sure you want to delete this class?'} %>
+
+<%= link_to class_path(@course), method: :delete, data: {confirm: 'Are you sure you want to delete this class?'} do %>
+  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Class
+<% end %>
 
 </div>
 
