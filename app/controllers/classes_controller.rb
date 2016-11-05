@@ -1,6 +1,6 @@
 class ClassesController < ApplicationController
   before_action :authenticate_user!
-  before_action :require_authorized_for_current_course, only: [:show]
+  before_action :require_authorized_for_current_course, only: [:show, :destroy]
 
   def index
     @new_course = Course.new
@@ -14,8 +14,14 @@ class ClassesController < ApplicationController
   end
 
   def show
-    @course = Course.find(params[:id])
+    @course = current_course
     @new_student = Student.new
+  end
+
+  def destroy
+    @course = current_course
+    @course.destroy
+    redirect_to classes_path
   end
 
   private
