@@ -24,6 +24,18 @@ $(function() {
     });
     location.reload();
   });
+  $(".reset").click(function() {
+    var updateURL = $(event.target).data("update-url");
+    var startingPoints = $(event.target).data("starting-points");
+    alert(startingPoints);
+    $.ajax({
+      type: 'PUT',
+      url: updateURL,
+      dataType: 'json',
+      data: { student: { points: startingPoints }}
+    });
+    location.reload();
+  })
 });
 </script>
 
@@ -49,7 +61,7 @@ $(function() {
             <span class="glyphicon glyphicon-trash" aria-hidden="true" data-update-url="<%= student_path(student) %>"></span>
             <% end %>
 
-            <span class="glyphicon glyphicon-erase link reset" aria-hidden="true" data-update-url="<%= student_path(student) %>"></span>
+            <span class="glyphicon glyphicon-erase link reset" aria-hidden="true" data-update-url="<%= student_path(student) %>" data-starting-points="<%= @course.starting_points %>"></span>
 
           </td>
           <td class="student"><%= student.last_name %>, <%= student.first_name %></td>
