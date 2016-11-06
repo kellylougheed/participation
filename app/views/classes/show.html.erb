@@ -27,15 +27,17 @@ $(function() {
   $(".reset").click(function() {
     var updateURL = $(event.target).data("update-url");
     var startingPoints = $(event.target).data("starting-points");
-    alert(startingPoints);
-    $.ajax({
-      type: 'PUT',
-      url: updateURL,
-      dataType: 'json',
-      data: { student: { points: startingPoints }}
-    });
-    location.reload();
-  })
+    var confirmed = confirm("Are you sure you wish to reset this student's points to the default value?");
+    if (confirmed === true) {
+      $.ajax({
+        type: 'PUT',
+        url: updateURL,
+        dataType: 'json',
+        data: { student: { points: startingPoints }}
+      });
+      location.reload();
+    }
+  });
 });
 </script>
 
@@ -91,8 +93,10 @@ $(function() {
         </button>
         <br/><br/>
 
- <span class="link"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span> Reset All Points</span><br/><br/>
-
+<%= link_to class_reset_all_path(@course), method: :put, data: {confirm: 'Are you sure you want to reset all students\' points?' } do %>
+<span class="link reset-all"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span> Reset All Points</span>
+<% end %>
+<br/><br/>
 
 <%= link_to class_path(@course), method: :delete, data: {confirm: 'Are you sure you want to delete this class?'} do %>
   <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Class

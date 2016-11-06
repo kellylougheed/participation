@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @course = Course.find(params[:class_id])

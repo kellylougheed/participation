@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :classes do
     resources :students, only: [:create]
+    match 'reset_all', to: 'classes#reset_all', via: :put
   end
 
   resources :students, only: [:update, :destroy]

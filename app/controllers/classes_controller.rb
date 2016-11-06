@@ -18,6 +18,14 @@ class ClassesController < ApplicationController
     @new_student = Student.new
   end
 
+  def reset_all
+    @course = Course.find(params[:class_id])
+    @all_students = @course.students
+    @starting_points = @course.starting_points
+    @all_students.update_all(points: @starting_points)
+    redirect_to class_path(@course)
+  end
+
   def destroy
     @course = current_course
     @course.destroy
