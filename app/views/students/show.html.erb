@@ -10,7 +10,18 @@
 <h2>Comments</h2>
 <br/>
 
+<% if !@comments.empty? %>
+
+<% @comments.each do |comment| %>
+<p>
+<%= comment.created_at %> - 
+<%= comment.message %></p>
+<% end %>
+
+<% else %>
 <p>There are no comments for <%= @student.first_name %> yet.</p>
+<% end %>
+<br/>
 
 <!-- New student trigger modal -->
         <button class="btn" id="new-comment" data-toggle="modal" data-target="#newCommentModal">

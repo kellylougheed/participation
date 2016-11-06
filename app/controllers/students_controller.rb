@@ -12,6 +12,7 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
     @course = @student.course
     @comment = Comment.new
+    @comments = @student.comments
   end
 
   def update
