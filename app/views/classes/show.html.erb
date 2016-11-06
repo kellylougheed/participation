@@ -2,6 +2,7 @@
 $(function() {
   $(".plus").click(function() {
     var updateURL = $(event.target).data("update-url");
+    var startingPoints = $(event.target).data("starting-points");
     var currentPoints = $(event.target).data("current-points");
     var newPoints = currentPoints + 1;
     $.ajax({
@@ -14,6 +15,7 @@ $(function() {
   });
   $(".minus").click(function() {
     var updateURL = $(event.target).data("update-url");
+    var startingPoints = $(event.target).data("starting-points");
     var currentPoints = $(event.target).data("current-points");
     var newPoints = currentPoints - 1;
     $.ajax({
@@ -58,7 +60,7 @@ $(function() {
 </thead><tbody>
           <% @course.students.order("last_name").each do |student| %>
           <tr>
-          <td class="control-panel">
+          <td id="control-panel">
             <%= link_to student_path(student), method: :delete, data: {confirm: 'Are you sure you want to delete this student?'} do %>
             <span class="glyphicon glyphicon-trash" aria-hidden="true" data-update-url="<%= student_path(student) %>"></span>
             <% end %>
@@ -66,15 +68,19 @@ $(function() {
             <span class="glyphicon glyphicon-erase link reset" aria-hidden="true" data-update-url="<%= student_path(student) %>" data-starting-points="<%= @course.starting_points %>"></span>
 
           </td>
-          <td class="student"><%= student.last_name %>, <%= student.first_name %></td>
+          <td id="student"><%= student.last_name %>, <%= student.first_name %>
+          <%= link_to student_path(student) do %>
+            <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+          <% end %>
+          </td>
 
-          <td><%= student.points %> / <%= @course.total_points %></td>
+          <td><span id="points"><%= student.points %></span> / <%= @course.total_points %></td>
 
-          <td><span class="plus glyphicon glyphicon-plus-sign" aria-hidden="true" data-update-url="<%= student_path(student) %>" data-current-points="<%= student.points %>"></span>
+          <td id="toggle-grade"><span class="plus glyphicon glyphicon-plus-sign" aria-hidden="true" data-update-url="<%= student_path(student) %>" data-current-points="<%= student.points %>" data-starting-points="<%= @course.starting_points %>"></span>
 
-          <span class="minus glyphicon glyphicon-minus-sign" aria-hidden="true" data-update-url="<%= student_path(student) %>" data-current-points="<%= student.points %>"></span></td>
+          <span class="minus glyphicon glyphicon-minus-sign" aria-hidden="true" data-update-url="<%= student_path(student) %>" data-current-points="<%= student.points %>" data-starting-points="<%= @course.starting_points %>"></span></td>
 
-          <td><%= ((student.points.to_f)/(@course.total_points.to_f)*100).round(2) %>% </td>
+          <td id="percentage"><%= ((student.points.to_f)/(@course.total_points.to_f)*100).round(2) %>% </td>
 
           </tr>
           <% end %>

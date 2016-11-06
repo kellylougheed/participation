@@ -1,0 +1,23 @@
+<br/>
+<div class="col-xs-10 col-xs-offset-1 text-center">
+
+<h1><%= @student.first_name %>&nbsp;<%= @student.last_name %> </h1>
+<br/>
+<h4><%= @course.name %> | <%= @student.points %>/<%= @course.total_points %> points | <%= ((@student.points.to_f)/(@course.total_points.to_f)*100).round(2) %>%</h4>
+<br/><br/>
+
+<div class="text-left">
+<h2>Comments</h2>
+<br/>
+
+<p>There are no comments for <%= @student.first_name %> yet.</p>
+
+</div>
+
+<br/>
+<hr/>
+<br/>
+
+<%= link_to student_path(@student), method: :delete, data: {confirm: 'Are you sure you want to delete this student?'} do %>
+    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Student
+<% end %>

@@ -8,6 +8,11 @@ class StudentsController < ApplicationController
     redirect_to class_path(@course)
   end
 
+  def show
+    @student = Student.find(params[:id])
+    @course = @student.course
+  end
+
   def update
     Student.find(params[:id]).update_attributes(student_params)
 

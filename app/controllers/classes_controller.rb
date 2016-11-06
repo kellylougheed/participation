@@ -1,6 +1,6 @@
 class ClassesController < ApplicationController
   before_action :authenticate_user!
-  before_action :require_authorized_for_current_course, only: [:show, :destroy]
+  before_action :require_authorized_for_current_course, only: [:show, :reset_all, :destroy]
 
   def index
     @new_course = Course.new

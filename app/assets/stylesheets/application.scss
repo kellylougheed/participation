@@ -130,7 +130,7 @@ a:hover, span.link:hover {
 }
 
 .roster {
-  max-width: 80%;
+  max-width: 90%;
   margin: 0 auto;
   font-size: 1.2em;
 }
@@ -140,10 +140,10 @@ a:hover, span.link:hover {
 }
 
 .roster td {
-  width: 15%;
+  width: 20%;
 }
 
-.roster td.student {
+.roster td#student {
   text-align: left;
   width: 40%;
 }
