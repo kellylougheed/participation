@@ -140,12 +140,12 @@ a:hover, span.link:hover {
 }
 
 .roster td {
-  width: 20%;
+  width: 16.25%;
 }
 
 .roster td.student {
   text-align: left;
-  width: 40%;
+  width: 35%;
 }
 
 .class a:hover {
@@ -191,7 +191,8 @@ img {
 
 @media (max-width: 767px) {
   .hero {
-    height: 400px;
+    background: none;
+    height: auto;
   }
   .textbox {
     width: 100%;

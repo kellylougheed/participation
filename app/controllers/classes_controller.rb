@@ -20,7 +20,9 @@ class ClassesController < ApplicationController
 
   def reset_all
     @course = Course.find(params[:class_id])
-    # add security here
+    if @course.user != current_user
+      render text: 'Unauthorized', status: :unauthorized
+    end
     @all_students = @course.students
     @starting_points = @course.starting_points
     @all_students.update_all(points: @starting_points)
