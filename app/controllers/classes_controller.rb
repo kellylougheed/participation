@@ -1,6 +1,6 @@
 class ClassesController < ApplicationController
   before_action :authenticate_user!
-  before_action :require_authorized_for_current_course, only: [:show, :reset_all, :destroy]
+  before_action :require_authorized_for_current_course, only: [:show, :destroy]
 
   def index
     @new_course = Course.new
@@ -20,6 +20,7 @@ class ClassesController < ApplicationController
 
   def reset_all
     @course = Course.find(params[:class_id])
+    # add security here
     @all_students = @course.students
     @starting_points = @course.starting_points
     @all_students.update_all(points: @starting_points)
