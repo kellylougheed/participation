@@ -12,6 +12,11 @@
 
 <p>There are no comments for <%= @student.first_name %> yet.</p>
 
+<!-- New student trigger modal -->
+        <button class="btn" id="new-comment" data-toggle="modal" data-target="#newCommentModal">
+           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Comment
+        </button>
+
 </div>
 
 <br/>
@@ -21,3 +26,25 @@
 <%= link_to student_path(@student), method: :delete, data: {confirm: 'Are you sure you want to delete this student?'} do %>
     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete Student
 <% end %>
+</div>
+
+<!-- New comment modal -->
+<div class="modal fade" id="newCommentModal" tabindex="-1" role="dialog" aria-labelledby="newCommentLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="newCommentModalLabel">Add a new student to <%= @course.name %></h4>
+      </div>
+      <%= simple_form_for @comment, url: student_comments_path(@student), html: {id: 'newCommentForm'} do |f| %>
+      <div class="modal-body">
+          <%= f.input :message %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal">Close</button>
+        <%= f.submit 'Submit', class: 'btn' %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     match 'reset_all', to: 'classes#reset_all', via: :put
   end
 
-  resources :students, only: [:show, :update, :destroy]
+  resources :students, only: [:show, :update, :destroy] do
+    resources :comments, only: [:create, :destroy]
+  end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -11,6 +11,7 @@ class StudentsController < ApplicationController
   def show
     @student = Student.find(params[:id])
     @course = @student.course
+    @comment = Comment.new
   end
 
   def update
