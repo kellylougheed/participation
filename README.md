@@ -17,7 +17,9 @@ Participation allows teachers to track student participation with a fair, points
 
 <li> Points for each student are automatically converted into percentages.</li><br/>
 
-<li> Classes and students can be deleted. Students' point values can be cleared and set back to the default.</li><br/>
+<li> Students' point values can be cleared and set back to the default. This action can be done on all students in a class at one time.</li><br/>
+
+<li> Teachers can add comments about individual students that are dated for future reference.</li><br/>
 
 <li> The data is queried and stored with PostgreSQL.</li><br/>
 </ul>
