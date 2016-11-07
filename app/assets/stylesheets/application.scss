@@ -102,7 +102,7 @@ a:hover, span.link:hover {
   cursor: pointer;
 }
 
-.btn {
+.btn, .btn:focus {
   letter-spacing: 2px;
   color: white;
   background-color: #CE0000;
@@ -119,37 +119,32 @@ a:hover, span.link:hover {
   padding: 10px;
   margin: 0 auto;
   border: 1px dotted #dddddd;
+  a {
+    color: #777777;
+  }
+  a:hover {
+    color: #111111;
+  }
 }
 
 .class:hover {
   background-color: #dddddd;
 }
 
-.class a {
-  color: #777777;
-}
-
 .roster {
   max-width: 90%;
   margin: 0 auto;
   font-size: 1.2em;
-}
-
-.roster thead th {
-  text-align: center;
-}
-
-.roster td {
-  width: 16.25%;
-}
-
-.roster td.student {
-  text-align: left;
-  width: 35%;
-}
-
-.class a:hover {
-  color: #111111;
+  th {
+    text-align: center;
+  }
+  td {
+    width: 16.25%;
+  }
+  td.student {
+    text-align: left;
+    width: 35%;
+  }
 }
 
 .plus, .minus {
