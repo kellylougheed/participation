@@ -13,7 +13,7 @@ class StudentsController < ApplicationController
     @student = current_student
     @course = @student.course
     @comment = Comment.new
-    @comments = @student.comments.all
+    @comments = @student.comments
   end
 
   def update
