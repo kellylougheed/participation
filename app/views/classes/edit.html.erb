@@ -1,0 +1,23 @@
+<br/>
+<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+
+<%= link_to class_path(@course) do %>
+  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+  Back to <%= @course.name %>
+<% end %>
+<br/><br/>
+
+<h1 class="text-center">Edit <%= @course.name %></h1>
+<br/>
+
+<%= simple_form_for @course, url: class_path(@course) do |f| %>
+    <%= f.input :name %><br/>
+    <%= f.input :starting_points %>
+    <i>Default number of participation points each student will start with.</i><br/><br/>
+    <%= f.input :total_points %>
+    <i>Total participation points possible to earn.</i>
+    <br/><br/>
+    <%= f.submit 'Update', class: 'btn' %>
+  <% end %>
+
+</div>
