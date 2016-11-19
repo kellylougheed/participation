@@ -1,9 +1,15 @@
 <br/>
 <div class="col-xs-10 col-xs-offset-1 text-center">
 
+<%= link_to class_path(@course), class: 'pull-left' do %>
+  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+  Back to <%= @course.name %>
+<% end %>
+<br/><br/>
+
 <h1><%= @student.first_name %>&nbsp;<%= @student.last_name %> </h1>
 <br/>
-<h4><%= link_to @course.name, class_path(@course) %> | <%= @student.points %>/<%= @course.total_points %> points | <%= ((@student.points.to_f)/(@course.total_points.to_f)*100).round(2) %>%</h4>
+<h4><%= @course.name %> | <%= @student.points %>/<%= @course.total_points %> points | <%= ((@student.points.to_f)/(@course.total_points.to_f)*100).round(2) %>%</h4>
 <br/><br/>
 
 <div class="text-left">
