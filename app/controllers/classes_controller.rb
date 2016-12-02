@@ -59,7 +59,11 @@ class ClassesController < ApplicationController
 
   helper_method :current_course
   def current_course
-    current_course ||= Course.find(params[:id])
+    if params[:id].nil?
+      @current_course ||= Course.find(params[:class_id])
+    else
+      @current_course ||= Course.find(params[:id])
+    end
   end
 
   def course_params
