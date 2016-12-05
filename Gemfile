@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 
 gem 'rails_12factor', group: :production
 
+group :development, :test do
+  gem 'foreman'
+end
+
 gem 'bootstrap-sass', '~> 3.3.5.1'
 gem 'sprockets', '2.11.0'
 
