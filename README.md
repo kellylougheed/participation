@@ -1,3 +1,5 @@
+[ ![Codeship Status for kellylougheed/participation](https://app.codeship.com/projects/5fcf5ac0-b11a-0134-b937-46f0c3813803/status?branch=master)](https://app.codeship.com/projects/193223)
+
 <h1>Participation</h1>
 
 <b>This app was built in Ruby on Rails, JavaScript, jQuery, HTML, CSS, and Bootstrap.</b>
