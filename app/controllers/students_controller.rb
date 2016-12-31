@@ -5,12 +5,8 @@ class StudentsController < ApplicationController
 
   def create
     @course = Course.find(params[:class_id])
-    if @course.students.create(student_params.merge(course_id: @course.id, points: @course.starting_points))
-      redirect_to class_path(@course)
-    else
-      redirect_to class_path(@course)
-      flash[:error] = 'Please enter a valid student name.'
-    end
+    @course.students.create(student_params.merge(course_id: @course.id, points: @course.starting_points))
+    redirect_to class_path(@course)
   end
 
   def show
@@ -30,9 +26,6 @@ class StudentsController < ApplicationController
   def destroy
     @student = current_student
     @course = @student.course
-    if current_user != @course.user
-      return render text: 'Not Allowed', status: :forbidden
-    end
     @student.destroy
     redirect_to class_path(@course)
   end

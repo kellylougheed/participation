@@ -14,7 +14,7 @@ class ClassesController < ApplicationController
       redirect_to classes_path
     else
       redirect_to classes_path
-      flash[:error] = 'Please enter a valid class name and numeric point values.'
+      flash[:alert] = 'Please enter a valid class name and numeric point values.'
     end
   end
 
@@ -24,12 +24,11 @@ class ClassesController < ApplicationController
 
   def update
     @course = current_course
-    @course.update_attributes(course_params)
-    if @course.valid?
+    if @course.update_attributes(course_params)
       redirect_to class_path(@course)
     else
       redirect_to class_path(@course)
-      flash[:error] = 'The course could not be updated because of an invalid class name or point values. Please try again.'
+      flash[:alert] = 'The class could not be updated because of an invalid class name or point values. Please try again.'
     end
   end
 

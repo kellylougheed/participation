@@ -3,12 +3,8 @@ class CommentsController < ApplicationController
   before_action :require_authorized_for_current_student
 
   def create
-    if current_student.comments.create(comment_params.merge(student_id: current_student.id))
-      redirect_to student_path(current_student)
-    else
-      redirect_to student_path(current_student)
-      flash[:error] = 'Please enter a valid comment.'
-    end
+    current_student.comments.create(comment_params.merge(student_id: current_student.id))
+    redirect_to student_path(current_student)
   end
 
   def destroy

@@ -95,6 +95,14 @@ RSpec.describe ClassesController, type: :controller do
       patch :update, id: course.id, course: { name: 'Sanskrit' }
       expect(response).to have_http_status(:unauthorized)
     end
+
+    it "should not update a class with invalid input" do
+      sign_in teacher
+      patch :update, id: course.id, course: { name: '' }
+      expect(response).to redirect_to class_path(course)
+      course.reload
+      expect(course.name).to eq('Latin')
+    end
   end
 
   describe "classes#destroy action" do
