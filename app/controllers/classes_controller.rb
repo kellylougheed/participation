@@ -1,6 +1,6 @@
 class ClassesController < ApplicationController
   before_action :authenticate_user!
-  before_action :require_authorized_for_current_course, only: [:edit, :show, :reset_all, :destroy]
+  before_action :require_authorized_for_current_course, only: [:edit, :update, :show, :reset_all, :destroy]
 
   def index
     @new_course = Course.new
@@ -14,7 +14,7 @@ class ClassesController < ApplicationController
       redirect_to classes_path
     else
       redirect_to classes_path
-      flash[:error] = 'Please enter a valid class name.'
+      flash[:error] = 'Please enter a valid class name and numeric point values.'
     end
   end
 
@@ -28,7 +28,8 @@ class ClassesController < ApplicationController
     if @course.valid?
       redirect_to class_path(@course)
     else
-      render :edit, status: :unprocessable_entity
+      redirect_to class_path(@course)
+      flash[:error] = 'The course could not be updated because of an invalid class name or point values. Please try again.'
     end
   end
 

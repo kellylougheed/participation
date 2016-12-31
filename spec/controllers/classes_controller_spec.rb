@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe ClassesController, type: :controller do
 
   let(:teacher) { FactoryGirl.create(:user) }
+  let(:other_teacher) { FactoryGirl.create(:user, email: "teacher2@teachers.com") }
+  let(:course) { FactoryGirl.create(:course, user_id: teacher.id) }
 
   describe "classes#index action" do
     it "should successfully show classes to a logged-in teacher" do
@@ -20,15 +22,12 @@ RSpec.describe ClassesController, type: :controller do
   describe "classes#show action" do
     it "should successfully show the class if the teacher is the current user" do
       sign_in teacher
-      course = FactoryGirl.create(:course, user_id: teacher.id)
       get :show, id: course.id
       expect(response).to have_http_status(:success)
     end
 
     it "should not show the class if the teacher is not the current user" do
-      other_teacher = FactoryGirl.create(:user, email: "teacher2@teachers.com")
       sign_in other_teacher
-      course = FactoryGirl.create(:course, user_id: teacher.id)
       get :show, id: course.id
       expect(response).to have_http_status(:unauthorized)
     end
@@ -45,17 +44,56 @@ RSpec.describe ClassesController, type: :controller do
       }
       expect(response).to redirect_to classes_path
 
-      course = Course.last
-      expect(course.name).to eq('Latin III')
-      expect(course.user).to eq(teacher)
+      c = Course.last
+      expect(c.name).to eq('Latin III')
+      expect(c.user).to eq(teacher)
     end
 
-    it "should not create an invalid class" do
+    it "should not create a class without a name" do
       sign_in teacher
       post :create, course: {
         name: ''
       }
       expect(Course.count).to eq(0)
+    end
+
+    it "should not accept point values that are not numbers" do
+      sign_in teacher
+      post :create, course: {
+        starting_points: 'Greek',
+        total_points: 'Greek'
+      }
+      expect(Course.count).to eq(0)
+    end
+  end
+
+  describe "classes#edit action" do
+    it "should let the teacher edit the class" do
+      sign_in teacher
+      get :edit, id: course.id
+      expect(response).to have_http_status(:success)
+    end
+
+    it "shouldn't let another teacher edit the class" do
+      sign_in other_teacher
+      get :edit, id: course.id
+      expect(response).to have_http_status(:unauthorized)
+    end
+  end
+
+  describe "classes#update action" do
+    it "should let the teacher update the class" do
+      sign_in teacher
+      patch :update, id: course.id, course: { name: 'Sanskrit' }
+      expect(response).to redirect_to class_path(course)
+      course.reload
+      expect(course.name).to eq('Sanskrit')
+    end
+
+    it "should not let another teacher update the class" do
+      sign_in other_teacher
+      patch :update, id: course.id, course: { name: 'Sanskrit' }
+      expect(response).to have_http_status(:unauthorized)
     end
   end
 
