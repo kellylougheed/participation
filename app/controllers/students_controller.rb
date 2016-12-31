@@ -20,7 +20,7 @@ class StudentsController < ApplicationController
   def update
     current_student.update_attributes(student_params)
 
-    redirect_to class_path(@course)
+    redirect_to class_path(current_student.course)
   end
 
   def destroy
@@ -30,7 +30,7 @@ class StudentsController < ApplicationController
       return render text: 'Not Allowed', status: :forbidden
     end
     @student.destroy
-    redirect_to class_path(@course)
+    redirect_to class_path(current_student.course)
   end
 
   private

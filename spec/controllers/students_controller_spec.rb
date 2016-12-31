@@ -47,9 +47,38 @@ RSpec.describe StudentsController, type: :controller do
   end
 
   describe "students#update action" do
+    it "should allow a teacher to update a student" do
+      sign_in teacher
+      patch :update, id: student.id, student: { points: 100 }
+      expect(response).to redirect_to class_path(course)
+
+      student.reload
+      expect(student.points).to eq(100)
+    end
+
+    it "should not allow a teacher to update another teacher's student" do
+      sign_in other_teacher
+      patch :update, id: student.id, student: { points: 100 }
+      expect(response).to have_http_status(:unauthorized)
+      student.reload
+      expect(student.points).not_to eq(100)
+    end
   end
 
   describe "students#destroy action" do
+    it "should allow a teacher to delete a student" do
+      sign_in teacher
+      delete :destroy, id: student.id
+      expect(response).to redirect_to class_path(course)
+      expect(Student.count).to eq(0)
+    end
+
+    it "should not allow a teacher to delete another teacher's student" do
+      sign_in other_teacher
+      delete :destroy, id: student.id
+      expect(response).to have_http_status(:unauthorized)
+      expect(Student.count).not_to eq(0)
+    end
   end
 
 end
