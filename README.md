@@ -1,4 +1,4 @@
-[ ![Codeship Status for kellylougheed/participation](https://app.codeship.com/projects/5fcf5ac0-b11a-0134-b937-46f0c3813803/status?branch=master)](https://app.codeship.com/projects/193223)
+[ ![Codeship Status for kellylougheed/participation](https://app.codeship.com/projects/5fcf5ac0-b11a-0134-b937-46f0c3813803/status?branch=master)](https://app.codeship.com/projects/193223) [![Coverage Status](https://coveralls.io/repos/github/kellylougheed/participation/badge.svg?branch=master)](https://coveralls.io/github/kellylougheed/participation?branch=master)
 
 <h1>Participation</h1>
 
