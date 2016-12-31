@@ -51,12 +51,11 @@ body {
 .textbox {
   font: 'Helvetica Neue', helvetica;
   color: white;
-  text-shadow: 1px 2px black;
   text-align: center;
   font-weight: 100;
   position: relative;
-  width: 500px;
-  top: 90px;
+  max-width: 600px;
+  top: 150px;
   margin: 0 auto;
   padding: 10px;
   z-index: 0;
@@ -188,13 +187,10 @@ img {
 
 @media (max-width: 767px) {
   .hero {
-    background: none;
-    height: auto;
+    height: 200px;
   }
   .textbox {
-    width: 100%;
-    top: 0;
-    left: 0;
+    top: 50px;
   }
   .navbar-default a.navbar-brand:link, .navbar-default a.navbar-brand:visited, .navbar-default a.navbar-brand:active, .navbar-default a.navbar-brand:hover {
     font-size: 2em;
