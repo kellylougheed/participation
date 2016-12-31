@@ -2,10 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails_12factor', group: :production
 
-group :development, :test do
-  gem 'foreman'
-end
-
 gem 'bootstrap-sass', '~> 3.3.5.1'
 gem 'sprockets', '2.11.0'
 
@@ -54,5 +50,6 @@ gem 'spring',        group: :development
 group :development, :test do
   gem 'rspec-rails', '~> 3.4'
   gem 'factory_girl_rails'
+  gem 'foreman'
 end
 
