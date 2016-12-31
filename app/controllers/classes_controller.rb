@@ -9,8 +9,13 @@ class ClassesController < ApplicationController
   def create
     @course = Course.new(course_params)
     @course.user = current_user
-    @course.save
-    redirect_to classes_path
+    if @course.valid?
+      @course.save
+      redirect_to classes_path
+    else
+      redirect_to classes_path
+      flash[:error] = 'Please enter a valid class name.'
+    end
   end
 
   def edit
