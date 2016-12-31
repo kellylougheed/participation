@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   root 'static_pages#index'
+  match 'about', to: 'static_pages#about', via: :get
 
   resources :classes do
     resources :students, only: [:create]
