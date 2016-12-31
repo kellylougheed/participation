@@ -132,10 +132,10 @@
         null,
         null,
         1,
-        0,
-        0,
-        0,
-        0,
+        1,
+        1,
+        1,
+        1,
         null,
         null,
         1,
@@ -157,14 +157,14 @@
         1,
         null,
         1,
-        0,
-        0,
+        2,
+        1,
         null,
         null,
         null,
         1,
         1,
-        0,
+        3,
         null,
         null,
         1,
@@ -185,6 +185,12 @@
       "/vagrant/src/participation/app/models/student.rb": [
         1,
         1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/vagrant/src/participation/app/models/comment.rb": [
         1,
         1,
         1,
@@ -232,14 +238,8 @@
         0,
         0,
         0
-      ],
-      "/vagrant/src/participation/app/models/comment.rb": [
-        0,
-        0,
-        0,
-        0
       ]
     },
-    "timestamp": 1483146540
+    "timestamp": 1483147188
   }
 }
