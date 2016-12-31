@@ -1,4 +1,4 @@
-web: bundle exec rails s -p $PORT -E $RACK_ENV
+web: bundle exec rails s -p $PORT
 
 .env
 Procfile
