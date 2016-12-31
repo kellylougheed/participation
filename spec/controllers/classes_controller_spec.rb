@@ -111,4 +111,20 @@ RSpec.describe ClassesController, type: :controller do
     end
   end
 
+  describe "classes#reset_all action" do
+    it "should reset everyone's starting points to the default" do
+      sign_in teacher
+      student = FactoryGirl.create(:student, course: course, points: 70)
+      put :reset_all, class_id: course.id
+      student.reload
+      expect(student.points).to eq(50)
+    end
+
+    it "should not let another teacher reset the points" do
+      sign_in other_teacher
+      put :reset_all, class_id: course.id
+      expect(response).to have_http_status(:unauthorized)
+    end
+  end
+
 end
