@@ -8,6 +8,28 @@ RSpec.describe StudentsController, type: :controller do
   let(:student) { FactoryGirl.create(:student, course_id: course.id) }
 
   describe "students#create action" do
+    it "should allow a teacher to create a new student" do
+      sign_in teacher
+      post :create, class_id: course.id, student: {
+        first_name: 'Susie',
+        last_name: 'Castilleja',
+      }
+      expect(response).to redirect_to class_path(course)
+
+      s = Student.last
+      expect(s.first_name).to eq('Susie')
+      expect(s.course).to eq(course)
+    end
+
+    it "should not allow a teacher to create a student in another teacher's class" do
+      sign_in other_teacher
+      post :create, class_id: course.id, student: {
+        first_name: 'Susie',
+        last_name: 'Castilleja',
+      }
+      expect(response).to have_http_status(:unauthorized)
+      expect(Student.count).to eq(0)
+    end
   end
 
   describe "students#show action" do
