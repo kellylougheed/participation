@@ -97,4 +97,18 @@ RSpec.describe ClassesController, type: :controller do
     end
   end
 
+  describe "classes#destroy action" do
+    it "should let the teacher delete the class" do
+      sign_in teacher
+      delete :destroy, id: course.id
+      expect(response).to redirect_to classes_path
+    end
+
+    it "should not let another teacher delete the class" do
+      sign_in other_teacher
+      delete :destroy, id: course.id
+      expect(response).to have_http_status(:unauthorized)
+    end
+  end
+
 end
