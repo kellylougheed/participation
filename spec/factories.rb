@@ -18,6 +18,7 @@ FactoryGirl.define do
 
   factory :comment do
     message "Good contribution"
+    friendly_date "Jan 1, 2017"
     association :student
   end
 

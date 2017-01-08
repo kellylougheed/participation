@@ -17,4 +17,3 @@
 
 # Ignore sensitive information
 /.env
-/.coveralls.yml
