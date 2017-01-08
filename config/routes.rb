@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :students, only: [:show, :update, :destroy] do
-    resources :comments, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy, :edit, :update]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

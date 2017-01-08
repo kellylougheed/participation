@@ -3,14 +3,30 @@ class CommentsController < ApplicationController
   before_action :require_authorized_for_current_student
 
   def create
-    current_student.comments.create(comment_params.merge(student_id: current_student.id))
+    current_student.comments.create(comment_params.merge(
+      student_id: current_student.id,
+      friendly_date: DateTime.now.strftime('%b %e, %Y')))
     redirect_to student_path(current_student)
   end
 
   def destroy
-    @comment = Comment.find_by_id(params[:id])
+    @comment = current_comment
     @comment.destroy
     redirect_to student_path(current_student)
+  end
+
+  def edit
+    @comment = current_comment
+  end
+
+  def update
+    @comment = current_comment
+    if @comment.update_attributes(comment_params)
+      redirect_to student_path(current_student)
+    else
+      redirect_to student_path(current_student)
+      flash[:alert] = 'The course could not be updated because of invalid text or an invalid date. Please try again.'
+    end
   end
 
   private
@@ -21,13 +37,22 @@ class CommentsController < ApplicationController
     end
   end
 
+  helper_method :current_comment
+  def current_comment
+    if params[:id].nil?
+      @current_comment ||= Comment.find(params[:comment_id])
+    else
+      @current_comment ||= Comment.find(params[:id])
+    end
+  end
+
   helper_method :current_student
   def current_student
     @current_student ||= Student.find(params[:student_id])
   end
 
   def comment_params
-    params.require(:comment).permit(:message)
+    params.require(:comment).permit(:message, :friendly_date)
   end
 
 end
