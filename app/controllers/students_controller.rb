@@ -16,6 +16,10 @@ class StudentsController < ApplicationController
     @comments = @student.comments
   end
 
+  def edit
+    @student = current_student
+  end
+
   def update
     @course = current_student.course
     current_student.update_attributes(student_params)

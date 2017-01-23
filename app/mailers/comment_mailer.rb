@@ -6,6 +6,6 @@ class CommentMailer < ActionMailer::Base
     @student = comment.student
     @course = @student.course
     mail(to: @student.email_address,
-        subject: "Your #{@course} teacher added a comment about you")
+        subject: "Your #{@course.name} teacher added a comment about you")
   end
 end

@@ -6,8 +6,9 @@ class CommentsController < ApplicationController
     @comment = current_student.comments.create(comment_params.merge(
       student_id: current_student.id,
       friendly_date: DateTime.now.strftime('%b %e, %Y')))
-    if @comment.auto_send == true
-      @comment.send_comment_email
+    if @comment.auto_send == true && @comment.send_comment_email
+      redirect_to student_path(current_student)
+      flash[:notice] = "Your comment was successfully emailed to #{@comment.student.first_name}."
     end
     redirect_to student_path(current_student)
   end
@@ -38,9 +39,10 @@ class CommentsController < ApplicationController
     if !@student.email_address
       redirect_to student_path(current_student)
       flash[:alert] = "There is no email address on file for #{@student.first_name}. Please add one and try again."
-    elsif @comment.send_comment_email
+    else
+      @comment.send_comment_email
       redirect_to student_path(current_student)
-      flash[:success] = 'Your comment was successfully emailed to #{@student.first_name}.'
+      flash[:notice] = "Your comment was successfully emailed to #{@student.first_name}."
     end
   end
 
@@ -67,7 +69,7 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:message, :friendly_date)
+    params.require(:comment).permit(:message, :friendly_date, :auto_send)
   end
 
 end
