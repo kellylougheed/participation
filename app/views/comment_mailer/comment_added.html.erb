@@ -1,5 +1,5 @@
 <p>Hello,</p>
 
-<p>Your teacher recently added a comment about your participation.</p>
+<p>Your <%= @student.course %> teacher recently added a comment about your participation:</p>
 
-<p>Happy studying!</p>
+<p><%= comment.friendly_date %>: <%= comment.message %></p>

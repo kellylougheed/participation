@@ -3,9 +3,12 @@ class CommentsController < ApplicationController
   before_action :require_authorized_for_current_student
 
   def create
-    current_student.comments.create(comment_params.merge(
+    @comment = current_student.comments.create(comment_params.merge(
       student_id: current_student.id,
       friendly_date: DateTime.now.strftime('%b %e, %Y')))
+    if @comment.auto_email == true
+      @comment.send_comment_email
+    end
     redirect_to student_path(current_student)
   end
 
@@ -26,6 +29,15 @@ class CommentsController < ApplicationController
     else
       redirect_to student_path(current_student)
       flash[:alert] = 'The course could not be updated because of invalid text or an invalid date. Please try again.'
+    end
+  end
+
+  def email_comment
+    @student = current_student
+    @comment = current_comment
+    if @comment.send_comment_email
+      redirect_to student_path(current_student)
+      flash[:success] = 'Your comment was successfully emailed to #{@student.first_name}.'
     end
   end
 

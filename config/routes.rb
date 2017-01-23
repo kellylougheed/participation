@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   end
 
   resources :students, only: [:show, :update, :destroy] do
-    resources :comments, only: [:create, :destroy, :edit, :update]
+    resources :comments, only: [:create, :destroy, :edit, :update] do
+      match 'email_comment', to: 'comments#email_comment', via: :put
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
