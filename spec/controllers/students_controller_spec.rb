@@ -46,6 +46,20 @@ RSpec.describe StudentsController, type: :controller do
     end
   end
 
+    describe "students#edit action" do
+    it "should let the teacher edit the student" do
+      sign_in teacher
+      get :edit, id: student.id
+      expect(response).to have_http_status(:success)
+    end
+
+    it "shouldn't let another teacher edit the student" do
+      sign_in other_teacher
+      get :edit, id: student.id
+      expect(response).to have_http_status(:unauthorized)
+    end
+  end
+
   describe "students#update action" do
     it "should allow a teacher to update a student" do
       sign_in teacher
@@ -62,6 +76,13 @@ RSpec.describe StudentsController, type: :controller do
       expect(response).to have_http_status(:unauthorized)
       student.reload
       expect(student.points).not_to eq(100)
+    end
+
+    it "should not update an invalid email address" do
+      sign_in teacher
+      patch :update, id: student.id, student: { email_address: 'spacecat!' }
+      student.reload
+      expect(student.email_address).not_to eq('spacecat!')
     end
   end
 

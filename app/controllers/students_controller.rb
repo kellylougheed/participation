@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
   before_action :authenticate_user!
   before_action :require_authorized_for_current_course, only: [:create]
-  before_action :require_authorized_for_current_student, only: [:show, :update, :destroy]
+  before_action :require_authorized_for_current_student, only: [:show, :edit, :update, :destroy]
 
   def create
     @course = Course.find(params[:class_id])
