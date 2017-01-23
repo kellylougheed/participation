@@ -27,7 +27,7 @@
   <% end %>
 <b><%= comment.friendly_date %></b> - 
 <%= comment.message %> - 
-<%= link_to student_comment_email_comment(@student, comment), method: :put, data: {confirm: "Are you sure you want to send #{@student.first_name} this comment?" } do %>
+<%= link_to student_comment_email_comment_path(@student, comment), method: :put, data: {confirm: "Are you sure you want to send #{@student.first_name} this comment?" } do %>
 <button class="btn btn-small">Email</button>
 <% end %></p>
 <% end %>

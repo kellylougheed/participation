@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment = current_student.comments.create(comment_params.merge(
       student_id: current_student.id,
       friendly_date: DateTime.now.strftime('%b %e, %Y')))
-    if @comment.auto_email == true
+    if @comment.auto_send == true
       @comment.send_comment_email
     end
     redirect_to student_path(current_student)
@@ -35,7 +35,10 @@ class CommentsController < ApplicationController
   def email_comment
     @student = current_student
     @comment = current_comment
-    if @comment.send_comment_email
+    if !@student.email_address
+      redirect_to student_path(current_student)
+      flash[:alert] = "There is no email address on file for #{@student.first_name}. Please add one and try again."
+    elsif @comment.send_comment_email
       redirect_to student_path(current_student)
       flash[:success] = 'Your comment was successfully emailed to #{@student.first_name}.'
     end
