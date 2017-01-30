@@ -30,7 +30,13 @@
   <%= link_to student_comment_email_comment_path(@student, comment), method: :put, data: {confirm: "Are you sure you want to send #{@student.first_name} this comment?" } do %>
   <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
   <% end %>
-<b><%= comment.friendly_date %></b>
+<b>
+<% if comment.friendly_date == nil || comment.friendly_date == '' %>
+<%= comment.created_at.strftime('%b %e, %Y') %>
+<% else %>
+<%= comment.friendly_date %>
+<% end %>
+</b>
 <br/>
 <%= comment.message %>
 </blockquote>
