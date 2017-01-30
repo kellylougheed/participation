@@ -1377,7 +1377,7 @@
         1,
         null,
         1,
-        1,
+        null,
         null
       ],
       "/vagrant/src/participation/app/mailers/comment_mailer.rb": [
@@ -1423,6 +1423,6 @@
         null
       ]
     },
-    "timestamp": 1485149168
+    "timestamp": 1485749791
   }
 }

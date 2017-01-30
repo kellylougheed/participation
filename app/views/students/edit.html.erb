@@ -1,3 +1,9 @@
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+});
+</script>
+
 <br/>
 <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
 
@@ -13,7 +19,7 @@
 <%= simple_form_for @student, url: student_path(@student) do |f| %>
   <%= f.input :first_name %><br/>
   <%= f.input :last_name %><br/>
-  <%= f.input :email_address, label: 'Email address (optional) <span class="glyphicon glyphicon-info-sign" aria-hidden="true">'.html_safe %><br/>
+  <%= f.input :email_address, label: 'Email address (optional) <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Students may have to add participationappedu@gmail.com as a contact in order to receive emails.">'.html_safe %><br/>
   <%= f.submit 'Update', class: 'btn' %>
 <% end %>
 

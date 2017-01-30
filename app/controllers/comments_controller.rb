@@ -9,8 +9,10 @@ class CommentsController < ApplicationController
     if @comment.auto_send == true && @comment.send_comment_email
       redirect_to student_path(current_student)
       flash[:notice] = "Your comment was successfully emailed to #{@comment.student.first_name}."
+    else
+      flash[:alert] = "There was a problem sending the email. Please check #{@comment.student.first_name}'s email address and try again."
+      redirect_to student_path(current_student)
     end
-    redirect_to student_path(current_student)
   end
 
   def destroy

@@ -22,9 +22,14 @@ class StudentsController < ApplicationController
 
   def update
     @course = current_student.course
-    current_student.update_attributes(student_params)
+    if current_student.update_attributes(student_params)
+      redirect_to class_path(@course)
+      flash[:notice] = 'The student was successfully updated.'
+    else
+      redirect_to class_path(@course)
+      flash[:alert] = 'The student could not be updated because of an invalid name or email address. Please try again.'
+    end
 
-    redirect_to class_path(@course)
   end
 
   def destroy
@@ -48,7 +53,7 @@ class StudentsController < ApplicationController
   end
 
   def student_params
-    params.require(:student).permit(:first_name, :last_name, :points)
+    params.require(:student).permit(:first_name, :last_name, :points, :email_address)
   end
 
 end
