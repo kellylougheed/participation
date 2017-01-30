@@ -25,6 +25,12 @@ Participation allows teachers to track student participation with a fair, points
 
 <li> Teachers can add comments about individual students that are dated for future reference.</li><br/>
 
+<img src="http://participation.herokuapp.com/assets/student-551adf9b526b3c68260e20aac253b215.png" style="border: 1px solid #aaaaaa; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);" /><br/><br/>
+
+<li> Teachers can have comments automatically mailed to students.</li><br/>
+
+<img src="http://participation.herokuapp.com/assets/email-f09d367a27535caa2d051260af151339.png" style="border: 1px solid #aaaaaa; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);" /><br/><br/>
+
 <li> Devise manages users, security, and logins.</li><br/>
 
 <li> The data is queried and stored with PostgreSQL.</li><br/>
