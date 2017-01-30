@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170108045849) do
+ActiveRecord::Schema.define(version: 20170123024005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170108045849) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "friendly_date"
+    t.boolean  "auto_send",     default: false
   end
 
   add_index "comments", ["student_id"], name: "index_comments_on_student_id", using: :btree
@@ -44,6 +45,7 @@ ActiveRecord::Schema.define(version: 20170108045849) do
     t.integer  "points"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email_address"
   end
 
   add_index "students", ["course_id"], name: "index_students_on_course_id", using: :btree

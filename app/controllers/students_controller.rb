@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
   before_action :authenticate_user!
   before_action :require_authorized_for_current_course, only: [:create]
-  before_action :require_authorized_for_current_student, only: [:show, :update, :destroy]
+  before_action :require_authorized_for_current_student, only: [:show, :edit, :update, :destroy]
 
   def create
     @course = Course.find(params[:class_id])
@@ -16,11 +16,20 @@ class StudentsController < ApplicationController
     @comments = @student.comments
   end
 
+  def edit
+    @student = current_student
+  end
+
   def update
     @course = current_student.course
-    current_student.update_attributes(student_params)
+    if current_student.update_attributes(student_params)
+      redirect_to class_path(@course)
+      flash[:notice] = 'The student was successfully updated.'
+    else
+      redirect_to class_path(@course)
+      flash[:alert] = 'The student could not be updated because of an invalid name or email address. Please try again.'
+    end
 
-    redirect_to class_path(@course)
   end
 
   def destroy
@@ -44,7 +53,7 @@ class StudentsController < ApplicationController
   end
 
   def student_params
-    params.require(:student).permit(:first_name, :last_name, :points)
+    params.require(:student).permit(:first_name, :last_name, :points, :email_address)
   end
 
 end

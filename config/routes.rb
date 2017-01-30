@@ -9,8 +9,10 @@ Rails.application.routes.draw do
     match 'reset_all', to: 'classes#reset_all', via: :put
   end
 
-  resources :students, only: [:show, :update, :destroy] do
-    resources :comments, only: [:create, :destroy, :edit, :update]
+  resources :students, only: [:show, :edit, :update, :destroy] do
+    resources :comments, only: [:create, :edit, :update, :destroy] do
+      match 'email_comment', to: 'comments#email_comment', via: :put
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

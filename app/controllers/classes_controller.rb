@@ -25,6 +25,7 @@ class ClassesController < ApplicationController
   def update
     @course = current_course
     if @course.update_attributes(course_params)
+      flash[:notice] = 'The class was successfully updated.'
       redirect_to class_path(@course)
     else
       redirect_to class_path(@course)
