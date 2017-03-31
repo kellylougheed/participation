@@ -19,7 +19,7 @@
 body {
   font-family: 'Helvetica Neue', arial;
   font-weight: 200;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 .navbar {
@@ -41,13 +41,13 @@ body {
 }
 
 .hero {
-  background: url('school.jpg');
+  background: url('hero.jpg');
   background-size: cover;
   background-position: center;
   width: 100%;
   height: 400px;
-  border-bottom: 1px solid #aaaaaa;
-  box-shadow: 2px 2px 5px rgba(0,0,0,.5);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
 }
 
 .textbox {
@@ -64,7 +64,18 @@ body {
 }
 
 .textbox h1 {
-  color: white;
+  -ms-transform: rotate(3deg);
+  -webkit-transform: rotate(3deg);
+  transform: rotate(3deg);
+}
+
+.textbox span {
+  color: black;
+  background: rgba(255,255,0,.95);
+  padding: 5px;
+  letter-spacing: 0;
+  line-height: 50px;
+  border-radius: 2px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -170,7 +181,7 @@ a:hover, span.link:hover {
 }
 
 input, textarea {
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 img {
@@ -191,7 +202,7 @@ input#comment_auto_send {
 }
 
 ::selection {
-  background-color: red;
+  background-color: #ffff00;
 }
 
 @media (max-width: 1024px) {
@@ -215,7 +226,6 @@ input#comment_auto_send {
   }
   .textbox {
     top: 30px;
-    background: rgba(0,0,0,.3);
   }
   .navbar-default a.navbar-brand:link, .navbar-default a.navbar-brand:visited, .navbar-default a.navbar-brand:active, .navbar-default a.navbar-brand:hover {
     font-size: 3em;
