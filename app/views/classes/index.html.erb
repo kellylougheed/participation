@@ -2,16 +2,19 @@
 <div class="col-xs-10 col-xs-offset-1 text-center">
 
 <h1>My Classes</h1>
-<br/><br/>
+<br/>
 
+<div class="flexbox">
 <% current_user.courses.each do |course| %>
   <div class="class">
-  <%= link_to course.name, class_path(course) %>
+    <div class="class-inner">
+      <%= link_to course.name, class_path(course) %>
+    </div>
   </div>
-  <br/>
 <% end %>
+</div>
 
-<hr/>
+<br class="clear"/>
 
 <!-- New class trigger modal -->
     <button class="btn" id="new-class" data-toggle="modal" data-target="#newClassModal">
@@ -39,7 +42,7 @@
           <i>Total participation points possible to earn.</i><br/>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
         <%= f.submit 'Create', class: 'btn' %>
       </div>
       <% end %>

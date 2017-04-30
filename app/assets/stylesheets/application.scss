@@ -41,8 +41,13 @@ a.navbar-brand:hover {
   color: #8B0000;
 }
 
-ul.nav.navbar-nav a:hover {
+ul.nav.navbar-nav a {
+  color: #777;
+}
+
+ul.nav.navbar-nav a:hover, ul.nav.navbar-nav a:focus {
   background: none;
+  color: #333;
 }
 
 ul.nav.navbar-nav.nav-right {
@@ -157,6 +162,17 @@ a:hover, span.link:hover {
   padding: 2px 6px;
 }
 
+.btn-close {
+  color: #777;
+  background-color: #eee;
+  border: 1px solid #ddd;
+}
+
+.btn-close:hover {
+  color: #777;
+  background-color: #ddd;
+}
+
 .required, .optional, .modal-title {
   font-weight: 200;
 }
@@ -166,22 +182,33 @@ a:hover, span.link:hover {
   font-size: 1.5em;
 }
 
+div.flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 .class {
-  width: 80%;
-  background-color: #eeeeee;
+  width: 33%;
+  float: left;
+}
+
+.class-inner {
+  background-color: #eee;
   padding: 10px;
-  margin: 0 auto;
-  border: 1px dotted #dddddd;
+  margin: 10px;
+  border: 1px solid #ddd;
   a {
-    color: #777777;
-  }
-  a:hover {
-    color: #111111;
+    color: #777;
   }
 }
 
-.class:hover {
-  background-color: #dddddd;
+.class-inner:hover {
+  background-color: #ddd;
+  a {
+    color: #111;
+  }
 }
 
 div.container {
@@ -213,18 +240,17 @@ div.card {
   cursor:pointer;
 }
 
-input[type="text"], input.string, textarea {
-letter-spacing: 1px;
+input[type="text"], input.string, textarea, input.form-control {
+  letter-spacing: 1px;
   font-size: 1.5em !important;
-  border: none !important;
-  border-bottom: 1px solid #555555 !important;
+  border: 1px solid #ddd !important;
 }
 
 img {
     display: block;
     margin: auto;
     padding: 10px;
-    border: 1px solid #aaaaaa;
+    border: 1px solid #aaa;
     box-shadow: 2px 2px 5px rgba(0,0,0,.5);
 }
 
@@ -246,14 +272,8 @@ input#comment_auto_send {
       font-size: 3em;
       margin-top: -20px;
     }
-  .percentage {
-    display: none;
-  }
-  .roster td {
-    width: 20%;
-  }
-  .roster td.student {
-    width: 40%;
+  .class {
+    width: 50%;
   }
 }
 
@@ -263,6 +283,9 @@ input#comment_auto_send {
   }
   .textbox {
     top: 30px;
+  }
+  .class {
+    width: 100%;
   }
   a.navbar-brand:link, a.navbar-brand:visited, a.navbar-brand:active, a.navbar-brand:hover {
     font-size: 3em;
