@@ -152,11 +152,13 @@ a:hover, span.link:hover {
 
 .btn-student:hover {
   background: #eeeeee;
+  cursor: pointer;
 }
 
 .btn:hover {
   color: white;
   background-color: #8B0000;
+  cursor: pointer;
 }
 
 .btn-small {
@@ -239,7 +241,7 @@ div.card {
 
 .delete:hover, .reset:hover {
   color: #000000;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 input[type="text"], input.string, textarea, input.form-control {
@@ -249,10 +251,10 @@ input[type="text"], input.string, textarea, input.form-control {
 }
 
 img {
-    display: block;
-    margin: auto;
-    padding: 10px;
-    border: 1px solid #ddd;
+  display: block;
+  margin: auto;
+  padding: 10px;
+  border: 1px solid #ddd;
 }
 
 input#comment_auto_send {
