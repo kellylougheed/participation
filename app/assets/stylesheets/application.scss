@@ -21,6 +21,7 @@ body {
   font-family: 'Helvetica Neue', arial;
   font-weight: 200;
   letter-spacing: 1px;
+  margin: 0 auto;
 }
 
 nav.navbar {
@@ -33,7 +34,7 @@ a.navbar-brand:link, a.navbar-brand:visited, a.navbar-brand:active {
   font-size: 3.5em;
   text-transform: uppercase;
   color: #CE0000;
-  margin: -30px 0 -20px 0;
+  margin: -20px 0 -20px 0;
 }
 
 a.navbar-brand:hover {
@@ -98,7 +99,7 @@ h1, h2 {
   margin: 0;
 }
 
-h3, h4 {
+h3, h4, h5 {
   font-weight: 200;
 }
 
@@ -110,10 +111,6 @@ h1 {
 
 h2 {
   font-size: 2em;
-}
-
-h3.buttons {
-  font-size: 1.75em;
 }
 
 p.alert {
