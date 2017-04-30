@@ -250,13 +250,29 @@ img {
     display: block;
     margin: auto;
     padding: 10px;
-    border: 1px solid #aaa;
-    box-shadow: 2px 2px 5px rgba(0,0,0,.5);
+    border: 1px solid #ddd;
 }
 
 input#comment_auto_send {
   margin-top: -5px;
   margin-left: 5px;
+}
+
+.btn-get-started {
+  font-size: 1.75em;
+  font-weight: 500;
+  letter-spacing: 2px;
+  padding: 5px 20px;
+  text-transform: uppercase;
+  border-radius: 20px;
+  border: 3px solid red;
+  color: #CE0000;
+}
+
+.btn-get-started:hover {
+  border: 3px solid #8B0000;
+  background: #8B0000;
+  color: #fff;
 }
 
 .long-text {
@@ -275,6 +291,9 @@ input#comment_auto_send {
   .class {
     width: 50%;
   }
+  .btn-get-started {
+    font-size: 1.5em;
+  }
 }
 
 @media (max-width: 767px) {
@@ -286,6 +305,9 @@ input#comment_auto_send {
   }
   .class {
     width: 100%;
+  }
+  .btn-get-started {
+    font-size: 1em;
   }
   a.navbar-brand:link, a.navbar-brand:visited, a.navbar-brand:active, a.navbar-brand:hover {
     font-size: 3em;
