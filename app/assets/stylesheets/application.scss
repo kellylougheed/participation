@@ -14,30 +14,44 @@
  *= require_self
  */
 
+@import "bootstrap";
 @import url(//fonts.googleapis.com/css?family=Oswald:300);
 
 body {
   font-family: 'Helvetica Neue', arial;
   font-weight: 200;
   letter-spacing: 1px;
+  font-size: 1.5em;
 }
 
-.navbar {
+nav.navbar {
   margin: 0;
-  z-index: 1;
 }
 
-.navbar-default a.navbar-brand:link, .navbar-default a.navbar-brand:visited, .navbar-default a.navbar-brand:active {
+a.navbar-brand:link, a.navbar-brand:visited, a.navbar-brand:active {
   font-family: 'Oswald';
   font-weight: 300;
   font-size: 3.5em;
   text-transform: uppercase;
   color: #CE0000;
-  margin-top: 3px;
+  margin-top: -40px;
 }
 
-.navbar-default a.navbar-brand:hover {
+a.navbar-brand:hover {
   color: #8B0000;
+}
+
+ul.nav.navbar-nav a {
+  color: #777;
+}
+
+ul.nav.navbar-nav a:hover, ul.nav.navbar-nav a:focus {
+  background: none;
+  color: #333;
+}
+
+ul.nav.navbar-nav.nav-right {
+  float: right !important;
 }
 
 .hero {
@@ -48,6 +62,7 @@ body {
   height: 400px;
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+  margin: 0;
 }
 
 .textbox {
@@ -56,7 +71,7 @@ body {
   text-align: center;
   font-weight: 100;
   position: relative;
-  max-width: 600px;
+  max-width: 700px;
   top: 100px;
   margin: 0 auto;
   padding: 10px;
@@ -78,36 +93,32 @@ body {
   border-radius: 2px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
   font-weight: 100;
   margin: 0;
 }
 
+h3, h4 {
+  font-weight: 200;
+}
+
 h1 {
   color: red;
-  font-size: 3em;
+  font-size: 2.8em;
   letter-spacing: 5px;
 }
 
-.modal-title {
-  text-align: left;
-  font-weight: 200;
+h2 {
+  font-size: 2em;
 }
 
-.red {
-  color: red;
-}
-
-.bold {
-  font-weight: 200;
-}
-
-.optional, .required {
-  font-weight: 400;
+h3.buttons {
+  font-size: 1.75em;
 }
 
 p.alert {
   margin: 0;
+  padding: 15px;
 }
 
 a, a:link, a:active, a:visited, span.link {
@@ -124,6 +135,21 @@ a:hover, span.link:hover {
   letter-spacing: 2px;
   color: white;
   background-color: #CE0000;
+  font-weight: 300;
+  padding: 8px;
+  border-radius: 5px;
+  font-size: .9em;
+}
+
+.btn-student {
+  background: #ffffff;
+  color: #333333;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+}
+
+.btn-student:hover {
+  background: #eeeeee;
 }
 
 .btn:hover {
@@ -132,47 +158,76 @@ a:hover, span.link:hover {
 }
 
 .btn-small {
-  font-size: .9em;
+  font-size: 1.5em;
   padding: 2px 6px;
 }
 
+.btn-close {
+  color: #777;
+  background-color: #eee;
+  border: 1px solid #ddd;
+}
+
+.btn-close:hover {
+  color: #777;
+  background-color: #ddd;
+}
+
+.required, .optional, .modal-title {
+  font-weight: 200;
+}
+
+.modal-title {
+  text-align: left;
+  font-size: 1.5em;
+}
+
+div.flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 .class {
-  width: 80%;
-  background-color: #eeeeee;
+  width: 33%;
+  float: left;
+}
+
+.class-inner {
+  background-color: #eee;
   padding: 10px;
-  margin: 0 auto;
-  border: 1px dotted #dddddd;
+  margin: 10px;
+  border: 1px solid #ddd;
   a {
-    color: #777777;
-  }
-  a:hover {
-    color: #111111;
+    color: #777;
   }
 }
 
-.class:hover {
-  background-color: #dddddd;
+.class-inner:hover {
+  background-color: #ddd;
+  a {
+    color: #111;
+  }
 }
 
-.roster {
-  max-width: 90%;
-  margin: 0 auto;
-  font-size: 1.2em;
-  th {
-    text-align: center;
-  }
-  td {
-    width: 16.25%;
-  }
-  td.student {
-    text-align: left;
-    width: 35%;
-  }
+div.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+div.card {
+  margin-bottom: 10px;
 }
 
 .plus, .minus {
-  font-size: 1.3em;
   color: red;
+}
+
+.delete, .reset {
+  color: grey;
 }
 
 .plus:hover, .minus:hover {
@@ -180,21 +235,44 @@ a:hover, span.link:hover {
   cursor: pointer;
 }
 
-input, textarea {
+.delete:hover, .reset:hover {
+  color: #000000;
+  cursor:pointer;
+}
+
+input[type="text"], input.string, textarea, input.form-control {
   letter-spacing: 1px;
+  font-size: 1.5em !important;
+  border: 1px solid #ddd !important;
 }
 
 img {
     display: block;
     margin: auto;
     padding: 10px;
-    border: 1px solid #aaaaaa;
-    box-shadow: 2px 2px 5px rgba(0,0,0,.5);
+    border: 1px solid #ddd;
 }
 
 input#comment_auto_send {
   margin-top: -5px;
   margin-left: 5px;
+}
+
+.btn-get-started {
+  font-size: 1.75em;
+  font-weight: 500;
+  letter-spacing: 2px;
+  padding: 5px 20px;
+  text-transform: uppercase;
+  border-radius: 20px;
+  border: 3px solid red;
+  color: #CE0000;
+}
+
+.btn-get-started:hover {
+  border: 3px solid #8B0000;
+  background: #8B0000;
+  color: #fff;
 }
 
 .long-text {
@@ -206,17 +284,15 @@ input#comment_auto_send {
 }
 
 @media (max-width: 1024px) {
-  .roster {
-    width: 100%;
+  a.navbar-brand:link, a.navbar-brand:visited, a.navbar-brand:active, a.navbar-brand:hover {
+      font-size: 3em;
+      margin-top: -20px;
+    }
+  .class {
+    width: 50%;
   }
-  .percentage {
-    display: none;
-  }
-  .roster td {
-    width: 20%;
-  }
-  .roster td.student {
-    width: 40%;
+  .btn-get-started {
+    font-size: 1.5em;
   }
 }
 
@@ -227,19 +303,14 @@ input#comment_auto_send {
   .textbox {
     top: 30px;
   }
-  .navbar-default a.navbar-brand:link, .navbar-default a.navbar-brand:visited, .navbar-default a.navbar-brand:active, .navbar-default a.navbar-brand:hover {
+  .class {
+    width: 100%;
+  }
+  .btn-get-started {
+    font-size: 1em;
+  }
+  a.navbar-brand:link, a.navbar-brand:visited, a.navbar-brand:active, a.navbar-brand:hover {
     font-size: 3em;
-  }
-  #total-points {
-    display: none;
-  }
-  .control-panel {
-    display: none;
-  }
-  .roster td {
-    width: 25%;
-  }
-  .roster td.student {
-    width: 50%;
+    margin-top: -20px;
   }
 }

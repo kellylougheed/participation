@@ -4,7 +4,7 @@ gem 'codecov', :require => false, :group => :test
 
 gem 'rails_12factor', group: :production
 
-gem 'bootstrap-sass', '~> 3.3.5.1'
+gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'sprockets', '2.11.0'
 
 gem 'simple_form'
@@ -55,5 +55,9 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.4'
   gem 'factory_girl_rails'
   gem 'foreman'
+end
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
 end
 
