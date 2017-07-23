@@ -269,19 +269,18 @@ input#comment_auto_send {
 
 .btn-get-started {
   font-size: 1.75em;
-  font-weight: 500;
+  font-weight: 100;
   letter-spacing: 2px;
   padding: 5px 20px;
-  text-transform: uppercase;
   border-radius: 20px;
-  border: 3px solid red;
-  color: #CE0000;
+  border: none;
+  color: #fff;
+  background: #CE0000;
 }
 
 .btn-get-started:hover {
-  border: 3px solid #8B0000;
+  border: none;
   background: #8B0000;
-  color: #fff;
 }
 
 .long-text {
