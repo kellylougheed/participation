@@ -19,7 +19,7 @@ Participation allows teachers to track student participation with a fair, points
 
 <li> Points for each student are automatically converted into percentages.</li><br/>
 
-<img src="http://participation.herokuapp.com/assets/gradebook-91d0ddd474ec628a9365a51c2a366941.png" /><br/><br/>
+<img src="https://participation.herokuapp.com/assets/gradebook-8ed5ad89098c73cfedc54152ce93eacb.png" /><br/><br/>
 
 <li> Students' point values can be cleared and set back to the default. This action can be done on all students in a class at one time.</li><br/>
 
