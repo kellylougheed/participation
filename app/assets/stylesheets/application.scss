@@ -291,6 +291,39 @@ a.btn-get-started:hover {
   background-color: #ffff00;
 }
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 20px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 1px;
+  /* Set the fixed height of the footer here */
+  height: 20px;
+  background: none;
+  text-align: center;
+  font-size: .7em;
+  color: #333;
+}
+
+.footer a {
+  color: #333;
+  border: none;
+}
+
+.footer a:hover {
+  color: #333;
+  border: none;
+}
+
 @media (max-width: 1024px) {
   a.navbar-brand:link, a.navbar-brand:visited, a.navbar-brand:active, a.navbar-brand:hover {
       font-size: 3em;
