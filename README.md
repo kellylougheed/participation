@@ -1,4 +1,4 @@
-[ ![Codeship Status for kellylougheed/participation](https://app.codeship.com/projects/5fcf5ac0-b11a-0134-b937-46f0c3813803/status?branch=master)](https://app.codeship.com/projects/193223) [![codecov](https://codecov.io/gh/kellylougheed/participation/branch/master/graph/badge.svg)](https://codecov.io/gh/kellylougheed/participation)
+[![codecov](https://codecov.io/gh/kellylougheed/participation/branch/master/graph/badge.svg)](https://codecov.io/gh/kellylougheed/participation)
 
 <h1>Participation</h1>
 
